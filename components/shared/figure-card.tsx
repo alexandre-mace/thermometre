@@ -27,8 +27,8 @@ export function FigureCard({
   isLast?: boolean
 }) {
   const colSpan = figure.colSpan ?? 6
-  // Wider ratio for full-width figures to avoid oversized images
-  const aspectRatio = colSpan >= 12 ? 16 / 7 : 16 / 10
+  // Wider ratio for full-width figures, taller for small cards
+  const aspectRatio = colSpan >= 12 ? 16 / 7 : colSpan >= 6 ? 16 / 10 : 4 / 3
 
   return (
     <div
@@ -40,7 +40,7 @@ export function FigureCard({
       style={{ gridColumn: `span ${colSpan}` }}
     >
       {/* ── Image with inline zoom ── */}
-      <AspectRatio ratio={aspectRatio} className="bg-neutral-50">
+      <AspectRatio ratio={aspectRatio} className="bg-secondary">
         <Zoom>
           <Image
             src={figure.src}
@@ -57,7 +57,7 @@ export function FigureCard({
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <p data-figure-source className="text-[9px] uppercase tracking-[0.3em] text-neutral-400 truncate cursor-help">
+              <p data-figure-source className="text-[9px] uppercase tracking-[0.3em] text-muted-foreground/60 truncate cursor-help">
                 {figure.source}
               </p>
             </TooltipTrigger>
@@ -71,27 +71,28 @@ export function FigureCard({
         <Dialog>
           <DialogTrigger asChild>
             <button
-              className="shrink-0 p-1 hover:bg-neutral-100 transition-colors"
+              className="shrink-0 p-1 hover:bg-accent transition-colors"
               aria-label="Voir en plein écran"
             >
-              <ZoomIn className="size-3.5 text-neutral-400" />
+              <ZoomIn className="size-3.5 text-muted-foreground/60" />
             </button>
           </DialogTrigger>
-          <DialogContent className="sm:max-w-[90vw] max-h-[90vh] p-0 overflow-auto">
+          <DialogContent className="max-w-[96vw] max-h-[96vh] p-0 overflow-auto">
             <DialogTitle className="sr-only">{figure.alt}</DialogTitle>
             <div className="p-4">
               <Image
                 src={figure.src}
                 alt={figure.alt}
-                width={1920}
-                height={1200}
+                width={2400}
+                height={1600}
                 className="w-full h-auto"
+                quality={95}
               />
               <div className="mt-3 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
-                <p className="text-[10px] leading-snug text-neutral-600 max-w-[600px]">
+                <p className="text-[10px] leading-snug text-muted-foreground max-w-[600px]">
                   {figure.caption}
                 </p>
-                <p className="text-[9px] uppercase tracking-[0.3em] text-neutral-400 shrink-0">
+                <p className="text-[9px] uppercase tracking-[0.3em] text-muted-foreground/60 shrink-0">
                   {figure.source}
                 </p>
               </div>

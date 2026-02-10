@@ -1,12 +1,12 @@
 import { SectionHeader } from "@/components/shared/section-header"
-import { SectionNav } from "@/components/shared/section-nav"
 import { FigureCard } from "@/components/shared/figure-card"
 import { OwidCard } from "@/components/shared/owid-card"
 import { SourceFooter } from "@/components/shared/source-footer"
 import { DataCell } from "@/components/shared/data-cell"
 import { causesFigures, causesData, causesOwid } from "@/lib/climate-data"
+import type { SectionNavItem } from "@/components/shared/section-nav"
 
-const nav = [
+export const causesNav: SectionNavItem[] = [
   { label: "Chiffres cles", anchor: "causes-chiffres" },
   { label: "Attribution", anchor: "causes-attribution" },
   { label: "Temperature", anchor: "causes-temperature" },
@@ -17,8 +17,6 @@ const nav = [
 export function CausesSection() {
   return (
     <>
-      <SectionNav items={nav} />
-
       <SectionHeader
         id="causes-chiffres"
         title="Les chiffres cles"

@@ -27,7 +27,7 @@ export function ConsequencesGrid() {
         className="border-b border-[--cell-border-color] px-5 py-4 md:px-6 md:py-5 flex items-center"
         style={{ gridColumn: "7 / -1" }}
       >
-        <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-500">
+        <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
           Scenario GIEC AR6
         </p>
         <span
@@ -44,7 +44,7 @@ export function ConsequencesGrid() {
         className="border-b border-[--cell-border-color] px-5 py-4 md:px-6 md:py-5 flex items-center"
         style={{ gridColumn: "7 / -1" }}
       >
-        <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-500">
+        <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
           Horizon
         </p>
         <span className="ml-auto text-2xl md:text-3xl font-bold leading-none tracking-tight">

@@ -1,11 +1,11 @@
 import { SectionHeader } from "@/components/shared/section-header"
-import { SectionNav } from "@/components/shared/section-nav"
 import { FigureCard } from "@/components/shared/figure-card"
 import { SourceFooter } from "@/components/shared/source-footer"
 import { ConsequencesGrid } from "./consequences-grid"
 import { consequencesFigures } from "@/lib/climate-data"
+import type { SectionNavItem } from "@/components/shared/section-nav"
 
-const nav = [
+export const consequencesNav: SectionNavItem[] = [
   { label: "SSP5-8.5", anchor: "csq-ssp585" },
   { label: "Projections", anchor: "csq-projections" },
   { label: "Risques", anchor: "csq-risques" },
@@ -18,7 +18,6 @@ const nav = [
 export function ConsequencesSection() {
   return (
     <>
-      <SectionNav items={nav} />
 
       <SectionHeader
         id="csq-ssp585"

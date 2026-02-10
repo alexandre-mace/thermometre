@@ -1,5 +1,4 @@
 import { SectionHeader } from "@/components/shared/section-header"
-import { SectionNav } from "@/components/shared/section-nav"
 import { FigureCard } from "@/components/shared/figure-card"
 import { OwidCard } from "@/components/shared/owid-card"
 import { SourceFooter } from "@/components/shared/source-footer"
@@ -11,8 +10,9 @@ import {
   foodOwid,
   owidFigures,
 } from "@/lib/climate-data"
+import type { SectionNavItem } from "@/components/shared/section-nav"
 
-const nav = [
+export const solutionsNav: SectionNavItem[] = [
   { label: "Chiffres cles", anchor: "sol-chiffres" },
   { label: "Transition", anchor: "sol-transition" },
   { label: "Attenuation", anchor: "sol-attenuation" },
@@ -23,8 +23,6 @@ const nav = [
 export function SolutionsSection() {
   return (
     <>
-      <SectionNav items={nav} />
-
       <SectionHeader
         id="sol-chiffres"
         title="Les chiffres cles"

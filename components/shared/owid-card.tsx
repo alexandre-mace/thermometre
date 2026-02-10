@@ -42,7 +42,7 @@ export function OwidCard({
       >
         <p
           data-figure-source
-          className="text-[9px] uppercase tracking-[0.3em] text-neutral-400 truncate"
+          className="text-[9px] uppercase tracking-[0.3em] text-muted-foreground/60 truncate"
         >
           {chart.source}
         </p>
@@ -50,10 +50,10 @@ export function OwidCard({
           href={chart.embedUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="shrink-0 p-1 hover:bg-neutral-100 transition-colors"
+          className="shrink-0 p-1 hover:bg-accent transition-colors"
           aria-label="Ouvrir sur Our World in Data"
         >
-          <ExternalLink className="size-3.5 text-neutral-400" />
+          <ExternalLink className="size-3.5 text-muted-foreground/60" />
         </a>
       </div>
     </div>

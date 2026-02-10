@@ -13,7 +13,7 @@ const sizeConfig: Record<
     numClass: "text-4xl md:text-6xl",
     unitClass: "text-xl md:text-2xl align-top",
     padClass: "px-4 py-5 md:px-5 md:py-6",
-    detailClass: "text-[9px] leading-snug text-neutral-500",
+    detailClass: "text-[9px] leading-snug text-muted-foreground",
   },
   medium: {
     col: 4,
@@ -21,7 +21,7 @@ const sizeConfig: Record<
     numClass: "text-3xl md:text-5xl",
     unitClass: "text-lg md:text-xl align-top",
     padClass: "px-5 py-6 md:px-6 md:py-8",
-    detailClass: "text-[10px] leading-snug text-neutral-500 max-w-[280px]",
+    detailClass: "text-[10px] leading-snug text-muted-foreground max-w-[280px]",
   },
   large: {
     col: 6,
@@ -29,7 +29,7 @@ const sizeConfig: Record<
     numClass: "text-6xl md:text-[7rem] lg:text-[9rem]",
     unitClass: "text-2xl md:text-3xl align-top",
     padClass: "px-6 py-6 md:px-8 md:py-8",
-    detailClass: "text-[10px] leading-snug text-neutral-500",
+    detailClass: "text-[10px] leading-snug text-muted-foreground",
   },
 }
 
@@ -55,8 +55,9 @@ export function DataCell({
         cfg.minH,
       )}
       style={{ gridColumn: `span ${colSpan}` }}
+      data-col-span={colSpan}
     >
-      <p data-cell-label className="text-[9px] uppercase tracking-[0.25em] text-neutral-500 mb-4">
+      <p data-cell-label className="text-[9px] uppercase tracking-[0.25em] text-muted-foreground mb-4">
         {data.label}
       </p>
       <div>
@@ -74,7 +75,7 @@ export function DataCell({
           <p data-cell-detail className={cfg.detailClass}>{data.detail}</p>
         )}
         {data.source && (
-          <p data-cell-source className="text-[8px] text-neutral-400 mt-1.5">{data.source}</p>
+          <p data-cell-source className="text-[8px] text-muted-foreground/60 mt-1.5">{data.source}</p>
         )}
       </div>
     </div>
