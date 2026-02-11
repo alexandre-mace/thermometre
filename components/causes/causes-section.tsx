@@ -7,10 +7,10 @@ import { causesFigures, causesData, causesOwid } from "@/lib/climate-data"
 import type { SectionNavItem } from "@/components/shared/section-nav"
 
 export const causesNav: SectionNavItem[] = [
-  { label: "Chiffres cles", anchor: "causes-chiffres" },
+  { label: "Chiffres clés", anchor: "causes-chiffres" },
   { label: "Attribution", anchor: "causes-attribution" },
-  { label: "Temperature", anchor: "causes-temperature" },
-  { label: "Emissions CO2", anchor: "causes-emissions" },
+  { label: "Température", anchor: "causes-temperature" },
+  { label: "Émissions CO₂", anchor: "causes-emissions" },
   { label: "Cycle du carbone", anchor: "causes-carbone" },
 ]
 
@@ -19,59 +19,58 @@ export function CausesSection() {
     <>
       <SectionHeader
         id="causes-chiffres"
-        title="Les chiffres cles"
+        title="Les chiffres clés"
         subtitle="Science physique du changement climatique"
       />
 
       {/* ── 6 data cells (2 cols each) ── */}
-      {causesData.map((cell, i) => (
+      {causesData.map((cell) => (
         <DataCell
           key={cell.id}
           data={cell}
           size="compact"
-          isLast={i === causesData.length - 1}
         />
       ))}
 
       <SectionHeader
         id="causes-attribution"
-        title="Rechauffement observe et attribution"
-        subtitle="La temperature a augmente de 1,1°C — l'influence humaine est le facteur dominant"
+        title="Réchauffement observé et attribution"
+        subtitle="La température a augmenté de 1,1°C — l'influence humaine est le facteur dominant"
       />
 
       {/* ── SPM.1 (6) | SPM.2 (6) ── */}
       <FigureCard figure={causesFigures[0]} />
-      <FigureCard figure={causesFigures[1]} isLast />
+      <FigureCard figure={causesFigures[1]} />
 
       <SectionHeader
         id="causes-temperature"
-        title="Anomalie de temperature observee"
-        subtitle="Evolution de la temperature mondiale depuis 1850"
+        title="Anomalie de température observée"
+        subtitle="Évolution de la température mondiale depuis 1850"
       />
 
       {/* ── OWID: temperature-anomaly (12) ── */}
-      <OwidCard chart={causesOwid[0]} isLast />
+      <OwidCard chart={causesOwid[0]} />
 
       <SectionHeader
         id="causes-emissions"
-        title="Emissions de CO2 dans le monde"
-        subtitle="Tendances historiques et repartition par pays"
+        title="Émissions de CO₂ dans le monde"
+        subtitle="Tendances historiques et répartition par pays"
       />
 
       {/* ── OWID: co2-explorer-per-capita (12) ── */}
-      <OwidCard chart={causesOwid[1]} isLast />
+      <OwidCard chart={causesOwid[1]} />
 
       <SectionHeader
         id="causes-carbone"
         title="Cycle du carbone"
-        subtitle="La capacite d'absorption des puits naturels diminue avec les emissions"
+        subtitle="La capacité d'absorption des puits naturels diminue avec les émissions"
       />
 
       {/* ── SPM.7 (12 full width) ── */}
-      <FigureCard figure={causesFigures[2]} isLast />
+      <FigureCard figure={causesFigures[2]} />
 
       <SourceFooter
-        text="Le rechauffement climatique est sans equivoque cause par les activites humaines. Chaque tonne supplementaire de CO2 contribue au rechauffement de maniere quasi lineaire."
+        text="Le réchauffement climatique est sans équivoque causé par les activités humaines. Chaque tonne supplémentaire de CO₂ contribue au réchauffement de manière quasi linéaire."
         source="Source : GIEC AR6 — WG I"
       />
     </>

@@ -1,14 +1,13 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
-@import "react-medium-image-zoom/dist/styles.css";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -126,14 +125,28 @@
   }
 }
 
+/* ══ Hide scrollbar utility ══ */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* ══════════════════════════════════════════════
    Theme tokens
    ══════════════════════════════════════════════ */
 
 :root {
+  --data-accent: #1a1af0;
   --grid-gap: 8px;
   --cell-radius: calc(var(--radius) + 4px);
   --cell-bg: var(--card);
+}
+
+.dark {
+  --data-accent: #6b6bff;
 }
 
 /* ══ Bento cells: shadcn Card style ══ */
@@ -155,6 +168,17 @@
 /* First header in grid: less top padding since nav is above */
 [data-bento-header]:first-child {
   padding-top: 0.75rem;
+}
+/* Offset scroll target for sticky header */
+[data-bento-header][id],
+[data-bento-cell][id] {
+  scroll-margin-top: 8rem;
+}
+@media (min-width: 769px) {
+  [data-bento-header][id],
+  [data-bento-cell][id] {
+    scroll-margin-top: 10rem;
+  }
 }
 
 [data-bento-header] {
@@ -199,20 +223,6 @@
 }
 
 /* ══ Data cell text ══ */
-[data-bento-cell] [data-cell-label] {
-  font-size: 0.8125rem;
-  font-weight: 500;
-  letter-spacing: 0;
-  text-transform: none;
-  color: var(--muted-foreground);
-  line-height: 1;
-}
-[data-bento-cell] [data-cell-detail] {
-  font-size: 0.8125rem;
-  color: var(--muted-foreground);
-  letter-spacing: 0;
-  line-height: 1.5;
-}
 [data-bento-cell] [data-cell-value] {
   font-weight: 700;
   letter-spacing: -0.025em;
@@ -220,7 +230,7 @@
 
 /* ══ Figure card text ══ */
 [data-bento-cell] [data-figure-source] {
-  font-size: 0.75rem;
+  font-size: 0.8125rem;
   text-transform: none;
   letter-spacing: 0;
   color: var(--muted-foreground);
@@ -230,42 +240,13 @@
   border-color: var(--border) !important;
 }
 
-/* ══ Tabs: shadcn TabsList + TabsTrigger ══ */
+/* ══ Tabs ══ */
 [data-tab-bar] {
-  background: var(--secondary);
-  border-radius: 0.5rem;
-  padding: 3px;
-  gap: 0;
-  height: 2.5rem;
-  align-items: center;
   border: none !important;
+  background: transparent;
 }
 [data-tab-bar] button {
   border: none !important;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  letter-spacing: 0;
-  text-transform: none;
-  height: calc(100% - 2px);
-  padding: 0 0.75rem;
-  transition: all 150ms;
-}
-[data-tab-bar] button[data-active="true"] {
-  background: var(--background) !important;
-  color: var(--foreground) !important;
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-}
-[data-tab-bar] button[data-active="false"] {
-  background: transparent !important;
-  color: color-mix(in oklch, var(--foreground) 60%, transparent) !important;
-}
-[data-tab-bar] button[data-active="false"]:hover {
-  color: var(--foreground) !important;
-}
-[data-tab-bar] button span:last-child {
-  color: inherit !important;
-  opacity: 0.6;
 }
 
 /* ══ Dashboard header ══ */
@@ -276,14 +257,6 @@
   text-transform: none;
 }
 
-/* ── react-medium-image-zoom ── */
-[data-rmiz-modal-overlay] {
-  background: rgba(0, 0, 0, 0.5) !important;
-  backdrop-filter: blur(4px) !important;
-}
-[data-rmiz-modal-img] {
-  border-radius: var(--cell-radius) !important;
-}
 
 /* ── Dialog ── */
 [data-slot="dialog-content"] {
@@ -306,15 +279,60 @@
   border: none;
 }
 
-/* ── Mobile responsive: stack grid cells ── */
+/* ══ Grid column spans from data attributes ══ */
+[data-col-span="2"] { grid-column: span 2; }
+[data-col-span="4"] { grid-column: span 4; }
+[data-col-span="6"] { grid-column: span 6; }
+[data-col-span="12"] { grid-column: 1 / -1; }
+
+/* Hero layout (consequences grid) */
+[data-hero-temp] { grid-column: 1 / 7; grid-row: span 2; }
+[data-hero-side] { grid-column: 7 / -1; }
+
+/* ── Mobile responsive: stack all cells full-width ── */
 @media (max-width: 768px) {
-  [data-bento-cell][data-col-span="2"] {
-    grid-column: span 6 !important;
-  }
-  [data-bento-cell][data-col-span="4"] {
+  [data-bento-cell] {
     grid-column: 1 / -1 !important;
+    grid-row: auto !important;
   }
 }
+
+/* ── Bento cell entry animation ── */
+@keyframes bento-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-bento-cell],
+[data-bento-header],
+[data-bento-footer] {
+  animation: bento-fade-in 0.4s ease-out both;
+}
+
+/* Stagger children: each successive cell delays slightly */
+[data-bento-cell]:nth-child(1) { animation-delay: 0ms; }
+[data-bento-cell]:nth-child(2) { animation-delay: 30ms; }
+[data-bento-cell]:nth-child(3) { animation-delay: 60ms; }
+[data-bento-cell]:nth-child(4) { animation-delay: 90ms; }
+[data-bento-cell]:nth-child(5) { animation-delay: 120ms; }
+[data-bento-cell]:nth-child(6) { animation-delay: 150ms; }
+[data-bento-cell]:nth-child(7) { animation-delay: 180ms; }
+[data-bento-cell]:nth-child(8) { animation-delay: 210ms; }
+[data-bento-cell]:nth-child(9) { animation-delay: 240ms; }
+[data-bento-cell]:nth-child(10) { animation-delay: 270ms; }
+[data-bento-cell]:nth-child(11) { animation-delay: 300ms; }
+[data-bento-cell]:nth-child(12) { animation-delay: 330ms; }
+[data-bento-cell]:nth-child(13) { animation-delay: 360ms; }
+[data-bento-cell]:nth-child(14) { animation-delay: 390ms; }
+[data-bento-cell]:nth-child(15) { animation-delay: 420ms; }
+[data-bento-header]:nth-child(n+2) { animation-delay: 60ms; }
+[data-bento-footer] { animation-delay: 100ms; }
 
 /* ── Tooltip ── */
 [data-slot="tooltip-content"] {

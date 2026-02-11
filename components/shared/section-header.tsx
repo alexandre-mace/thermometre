@@ -11,12 +11,12 @@ export function SectionHeader({
     <div
       id={id}
       data-bento-header
-      className="border-b border-[--cell-border-color] px-5 py-4 md:px-6 md:py-5"
-      style={{ gridColumn: "1 / -1" }}
+      className="py-4 md:py-5"
+      data-col-span="12"
     >
-      <p data-header-title>
+      <h2 data-header-title>
         {title}
-      </p>
+      </h2>
       {subtitle && (
         <p data-header-subtitle className="mt-0.5">{subtitle}</p>
       )}

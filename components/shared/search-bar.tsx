@@ -58,7 +58,7 @@ function buildIndex(): SearchResult[] {
       label: d.label,
       detail: `${d.value}${d.unit ?? ""} — ${d.detail ?? ""}`,
       tab: "causes",
-      anchor: "causes-chiffres",
+      anchor: d.id,
     })
   }
   for (const f of causesFigures) {
@@ -84,7 +84,7 @@ function buildIndex(): SearchResult[] {
       label: d.label,
       detail: `${d.value}${d.unit ?? ""} — ${d.detail ?? ""}`,
       tab: "consequences",
-      anchor: "csq-ssp585",
+      anchor: d.id,
     })
   }
   for (const f of consequencesFigures) {
@@ -102,7 +102,7 @@ function buildIndex(): SearchResult[] {
       label: d.label,
       detail: `${d.value}${d.unit ?? ""} — ${d.detail ?? ""}`,
       tab: "solutions",
-      anchor: "sol-chiffres",
+      anchor: d.id,
     })
   }
   for (const f of solutionsFigures) {
@@ -190,6 +190,7 @@ export function SearchBar({
       <button
         onClick={() => setOpen(true)}
         className="flex items-center gap-2 bg-secondary rounded-md px-2.5 py-1.5 cursor-pointer hover:bg-accent transition-colors"
+        aria-label="Rechercher"
       >
         <Search className="size-3.5 text-muted-foreground/60 shrink-0" />
         <span className="text-xs text-muted-foreground/60 hidden md:inline">

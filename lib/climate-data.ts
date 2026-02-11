@@ -1,4 +1,5 @@
-export const ACCENT = "#1a1af0" as const
+/** Use CSS variable var(--data-accent) instead of this constant for inline styles */
+export const ACCENT = "var(--data-accent)" as const
 
 /* ── Types ── */
 
@@ -67,10 +68,10 @@ export const causesFigures: FigureRef[] = [
 export const causesData: DataCellData[] = [
   {
     id: "warming-observed",
-    label: "Rechauffement observe",
+    label: "Réchauffement observé",
     value: "+1,1",
     unit: "°C",
-    detail: "depuis l'ere preindustrielle (1850-1900)",
+    detail: "depuis l'ère préindustrielle (1850-1900)",
     source: "AR6 WG1 SPM A.1.2",
     accent: true,
   },
@@ -79,23 +80,23 @@ export const causesData: DataCellData[] = [
     label: "Part humaine",
     value: ">1,0",
     unit: "°C",
-    detail: "du rechauffement attribue a l'activite humaine",
+    detail: "du réchauffement attribué à l'activité humaine",
     source: "AR6 WG1 SPM A.1.3",
   },
   {
     id: "co2-concentration",
-    label: "Concentration CO2",
+    label: "Concentration CO₂",
     value: "420",
     unit: "ppm",
-    detail: "niveau sans precedent depuis 2 millions d'annees",
+    detail: "niveau sans précédent depuis 2 millions d'années",
     source: "AR6 WG1 SPM A.2.1",
   },
   {
     id: "cumulative-emissions",
-    label: "Emissions cumulees",
+    label: "Émissions cumulées",
     value: "2390",
     unit: "Gt",
-    detail: "de CO2 emises depuis 1850 (±240 Gt)",
+    detail: "de CO₂ émises depuis 1850 (±240 Gt)",
     source: "AR6 WG1 SPM D.1.1",
   },
   {
@@ -103,7 +104,7 @@ export const causesData: DataCellData[] = [
     label: "Budget carbone 1,5°C",
     value: "500",
     unit: "Gt",
-    detail: "de CO2 restantes pour limiter a 1,5°C (50 %)",
+    detail: "de CO₂ restantes pour limiter à 1,5°C (50 %)",
     source: "AR6 WG1 SPM Table SPM.2",
   },
   {
@@ -111,7 +112,7 @@ export const causesData: DataCellData[] = [
     label: "Projection SSP5-8.5",
     value: "+4,4",
     unit: "°C",
-    detail: "rechauffement projete en 2100 (meilleure estimation)",
+    detail: "réchauffement projeté en 2100 (meilleure estimation)",
     source: "AR6 WG1 SPM Table SPM.1",
     accent: true,
   },
@@ -223,15 +224,15 @@ export const consequencesFigures: FigureRef[] = [
 export const consequencesData: DataCellData[] = [
   {
     id: "population-vulnerable",
-    label: "Population vulnerable",
+    label: "Population vulnérable",
     value: "3,6",
     unit: "mrd",
-    detail: "personnes vivant dans des contextes hautement vulnerables au changement climatique",
+    detail: "personnes vivant dans des contextes hautement vulnérables au changement climatique",
     source: "AR6 WG2 SPM B.2",
   },
   {
     id: "sea-rise",
-    label: "Montee des mers",
+    label: "Montée des mers",
     value: "0,82",
     unit: "m",
     detail: "d'ici 2100 (fourchette probable 0,63\u20131,01 m, SSP5-8.5)",
@@ -239,10 +240,10 @@ export const consequencesData: DataCellData[] = [
   },
   {
     id: "water-scarcity",
-    label: "Penurie d'eau",
+    label: "Pénurie d'eau",
     value: "~4",
     unit: "mrd",
-    detail: "personnes en situation de stress hydrique severe",
+    detail: "personnes en situation de stress hydrique sévère",
     source: "AR6 WG2 SPM B.1.2",
   },
   {
@@ -250,23 +251,23 @@ export const consequencesData: DataCellData[] = [
     label: "Rendements Afrique",
     value: "\u221246",
     unit: "%",
-    detail: "riz, mais, ble (\u221223 a \u221246 %)",
+    detail: "riz, maïs, blé (\u221223 à \u221246 %)",
     source: "AR6 WG2 Chapitre 9 (Afrique)",
   },
   {
     id: "food-insecurity",
-    label: "Insecurite alimentaire",
+    label: "Insécurité alimentaire",
     value: "80",
     unit: "mln",
-    detail: "personnes supplementaires exposees a la faim d'ici 2050",
+    detail: "personnes supplémentaires exposées à la faim d'ici 2050",
     source: "AR6 WG2 SPM B.4.3",
   },
   {
     id: "biodiversity",
-    label: "Biodiversite",
+    label: "Biodiversité",
     value: "13\u201339",
     unit: "%",
-    detail: "especes a haut risque d'extinction (selon le niveau de rechauffement)",
+    detail: "espèces à haut risque d'extinction (selon le niveau de réchauffement)",
     source: "AR6 WG2 SPM B.4.1",
   },
 ]
@@ -274,31 +275,31 @@ export const consequencesData: DataCellData[] = [
 export const consequencesDataLarge: DataCellData[] = [
   {
     id: "sea-2300",
-    label: "Montee des mers — horizon 2300",
+    label: "Montée des mers — horizon 2300",
     value: "15",
     unit: "m",
     detail:
-      "Hausse potentielle d'ici 2300 avec instabilite des calottes glaciaires. Processus irreversibles a l'echelle de plusieurs siecles.",
+      "Hausse potentielle d'ici 2300 avec instabilité des calottes glaciaires. Processus irréversibles à l'échelle de plusieurs siècles.",
     source: "AR6 WG1 SPM B.5.4",
     colSpan: 4,
   },
   {
     id: "permafrost",
-    label: "Permafrost degrade",
+    label: "Permafrost dégradé",
     value: "70",
     unit: "%",
     detail:
-      "du permafrost proche de la surface pourrait degeler d'ici 2100 sous SSP5-8.5. Liberation de carbone et methane amplificatrice.",
+      "du permafrost proche de la surface pourrait dégeler d'ici 2100 sous SSP5-8.5. Libération de carbone et méthane amplificatrice.",
     source: "AR6 WG1 SPM B.4.3",
     colSpan: 4,
   },
   {
     id: "coral",
-    label: "Recifs coralliens",
+    label: "Récifs coralliens",
     value: ">99",
     unit: "%",
     detail:
-      "des recifs coralliens tropicaux perdus a +2°C. Effondrement quasi total des ecosystemes recifaux.",
+      "des récifs coralliens tropicaux perdus à +2°C. Effondrement quasi total des écosystèmes récifaux.",
     source: "AR6 WG2 SPM B.4.1",
     accent: true,
     colSpan: 4,
@@ -360,10 +361,10 @@ export const solutionsFigures: FigureRef[] = [
 export const solutionsData: DataCellData[] = [
   {
     id: "energy-share",
-    label: "Energie",
+    label: "Énergie",
     value: "34",
     unit: "%",
-    detail: "part des emissions mondiales de GES",
+    detail: "part des émissions mondiales de GES",
     source: "AR6 WG3 SPM Figure SPM.2",
   },
   {
@@ -371,7 +372,7 @@ export const solutionsData: DataCellData[] = [
     label: "Industrie",
     value: "24",
     unit: "%",
-    detail: "part des emissions mondiales de GES",
+    detail: "part des émissions mondiales de GES",
     source: "AR6 WG3 SPM Figure SPM.2",
   },
   {
@@ -379,7 +380,7 @@ export const solutionsData: DataCellData[] = [
     label: "AFOLU",
     value: "22",
     unit: "%",
-    detail: "agriculture, forets, usage des terres",
+    detail: "agriculture, forêts, usage des terres",
     source: "AR6 WG3 SPM Figure SPM.2",
   },
   {
@@ -387,15 +388,15 @@ export const solutionsData: DataCellData[] = [
     label: "Transport",
     value: "15",
     unit: "%",
-    detail: "part des emissions mondiales de GES",
+    detail: "part des émissions mondiales de GES",
     source: "AR6 WG3 SPM Figure SPM.2",
   },
   {
     id: "reduction-2030",
-    label: "Reduction 2030",
+    label: "Réduction 2030",
     value: "\u221243",
     unit: "%",
-    detail: "reduction necessaire d'ici 2030 pour 1,5°C",
+    detail: "réduction nécessaire d'ici 2030 pour 1,5°C",
     source: "AR6 WG3 SPM C.1",
     accent: true,
   },
@@ -404,7 +405,7 @@ export const solutionsData: DataCellData[] = [
     label: "Potentiel demande",
     value: "40\u201370",
     unit: "%",
-    detail: "reduction possible cote demande d'ici 2050",
+    detail: "réduction possible côté demande d'ici 2050",
     source: "AR6 WG3 SPM C.10",
   },
 ]
@@ -417,7 +418,7 @@ export const causesOwid: OwidChartRef[] = [
   {
     id: "temperature-anomaly",
     embedUrl: "https://ourworldindata.org/grapher/temperature-anomaly?tab=line",
-    title: "Anomalie de temperature mondiale",
+    title: "Anomalie de température mondiale",
     source: "Our World in Data — CC BY",
     colSpan: 12,
   },
@@ -425,7 +426,7 @@ export const causesOwid: OwidChartRef[] = [
     id: "co2-explorer-per-capita",
     embedUrl:
       "https://ourworldindata.org/explorers/co2?facet=none&hideControls=false&Gas+or+Warming=CO%E2%82%82&Accounting=Production-based&Fuel+or+Land+Use+Change=All+fossil+emissions&Count=Per+capita&country=CHN~USA~IND~GBR~OWID_WRL&tab=line",
-    title: "Emissions CO2 par habitant — grands emetteurs",
+    title: "Émissions CO₂ par habitant — grands émetteurs",
     source: "Our World in Data — CC BY",
     colSpan: 12,
   },
@@ -436,7 +437,7 @@ export const solutionsOwid: OwidChartRef[] = [
     id: "energy-consumption-by-source",
     embedUrl:
       "https://ourworldindata.org/grapher/energy-consumption-by-source-and-country?stackMode=absolute&tab=chart",
-    title: "Consommation d'energie par source",
+    title: "Consommation d'énergie par source",
     source: "Our World in Data — CC BY",
     colSpan: 6,
   },
@@ -444,7 +445,7 @@ export const solutionsOwid: OwidChartRef[] = [
     id: "electricity-prod-source-stacked",
     embedUrl:
       "https://ourworldindata.org/grapher/electricity-prod-source-stacked?tab=chart",
-    title: "Production d'electricite par source",
+    title: "Production d'électricité par source",
     source: "Our World in Data — CC BY",
     colSpan: 6,
   },
@@ -454,18 +455,18 @@ export const owidFigures: FigureRef[] = [
   {
     id: "owid-food-emissions-supply-chain",
     src: "/figures/owid/food-emissions-supply-chain.png",
-    alt: "Emissions GES par aliment sur toute la chaine d'approvisionnement",
+    alt: "Émissions GES par aliment sur toute la chaîne d'approvisionnement",
     caption:
-      "Emissions de gaz a effet de serre par kilogramme d'aliment, decomposees par etape de la chaine d'approvisionnement. Le boeuf emet 60 kg CO2eq/kg, soit 200 fois plus que les noix.",
+      "Émissions de gaz à effet de serre par kilogramme d'aliment, décomposées par étape de la chaîne d'approvisionnement. Le bœuf émet 60 kg CO₂eq/kg, soit 200 fois plus que les noix.",
     source: "Our World in Data — Poore & Nemecek (2018) — CC BY",
     colSpan: 12,
   },
   {
     id: "owid-ghg-warming-scenarios",
     src: "/figures/owid/ghg-warming-scenarios.png",
-    alt: "Scenarios d'emissions mondiales et rechauffement associe",
+    alt: "Scénarios d'émissions mondiales et réchauffement associé",
     caption:
-      "Trajectoires d'emissions mondiales de GES selon differents scenarios : sans politiques climatiques (4,1-4,8°C), politiques actuelles (2,5-2,9°C), engagements des pays (2,1°C), et trajectoires compatibles 2°C et 1,5°C.",
+      "Trajectoires d'émissions mondiales de GES selon différents scénarios : sans politiques climatiques (4,1-4,8°C), politiques actuelles (2,5-2,9°C), engagements des pays (2,1°C), et trajectoires compatibles 2°C et 1,5°C.",
     source: "Our World in Data — Climate Action Tracker — CC BY",
     colSpan: 4,
   },
@@ -484,7 +485,7 @@ export const foodOwid: OwidChartRef[] = [
     id: "ghg-emissions-seafood",
     embedUrl:
       "https://ourworldindata.org/grapher/ghg-emissions-seafood?country=Bivalves+%28farmed%29~Bivalves+%28wild%29~Carp+%28farmed%29~Cod%2C+haddock+%28wild%29~Catfish+%28farmed%29~Flounder+%28wild%29~Herring%2C+sardines+%28wild%29~Jack+fish+%28wild%29~Lobster+%28wild%29~Milkfish+%28farmed%29~Other+freshwater+fish+%28farmed%29~Other+marine+fish+%28farmed%29~Tuna+%28wild%29~Trout+%28farmed%29~Tilapia+%28farmed%29~Squid+%28wild%29~Silver%2Fbighead+%28farmed%29~Shrimp+%28wild%29~Shrimp+%28farmed%29~Seaweed+%28farmed%29~Salmon%2C+trout+%28wild%29~Salmon+%28farmed%29~Redfish%2C+bass+%28wild%29~Chicken&tab=chart",
-    title: "Emissions GES des produits de la mer",
+    title: "Émissions GES des produits de la mer",
     source: "Our World in Data — CC BY",
     colSpan: 6,
   },

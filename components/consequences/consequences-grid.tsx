@@ -7,28 +7,28 @@ export function ConsequencesGrid() {
     <>
       {/* ── HEADER: +4,4°C ── */}
 
-      {/* Left: big temperature — spans 2 rows */}
+      {/* Left: big temperature — spans 2 rows on desktop, full width on mobile */}
       <div
         data-bento-cell
-        className="border-b border-[--cell-border-color] border-r border-r-[--cell-border-color] px-6 py-6 md:px-8 md:py-8 flex flex-col justify-center min-h-[140px] md:min-h-[180px]"
-        style={{ gridColumn: "1 / 7", gridRow: "span 2" }}
+        data-hero-temp
+        className="px-6 py-6 md:px-8 md:py-8 flex flex-col justify-center min-h-[140px] md:min-h-[180px]"
       >
-        <h2
-          className="text-6xl md:text-[7rem] lg:text-[9rem] font-bold leading-[0.85] tracking-tight"
+        <p
+          className="text-6xl md:text-7xl lg:text-8xl font-bold leading-[0.85] tracking-tight"
           style={{ color: ACCENT }}
         >
           +4,4°C
-        </h2>
+        </p>
       </div>
 
       {/* Right top: Scenario label */}
       <div
         data-bento-cell
-        className="border-b border-[--cell-border-color] px-5 py-4 md:px-6 md:py-5 flex items-center"
-        style={{ gridColumn: "7 / -1" }}
+        data-hero-side
+        className="px-5 py-4 md:px-6 md:py-5 flex items-center"
       >
-        <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-          Scenario GIEC AR6
+        <p className="text-[10px] uppercase tracking-normal text-muted-foreground">
+          Scénario GIEC AR6
         </p>
         <span
           className="ml-auto text-sm md:text-base font-bold tracking-tight"
@@ -41,10 +41,10 @@ export function ConsequencesGrid() {
       {/* Right bottom: Horizon */}
       <div
         data-bento-cell
-        className="border-b border-[--cell-border-color] px-5 py-4 md:px-6 md:py-5 flex items-center"
-        style={{ gridColumn: "7 / -1" }}
+        data-hero-side
+        className="px-5 py-4 md:px-6 md:py-5 flex items-center"
       >
-        <p className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+        <p className="text-[10px] uppercase tracking-normal text-muted-foreground">
           Horizon
         </p>
         <span className="ml-auto text-2xl md:text-3xl font-bold leading-none tracking-tight">
@@ -53,22 +53,20 @@ export function ConsequencesGrid() {
       </div>
 
       {/* ── ROW: 6 compact cells ── */}
-      {consequencesData.map((cell, i) => (
+      {consequencesData.map((cell) => (
         <DataCell
           key={cell.id}
           data={cell}
           size="compact"
-          isLast={i === consequencesData.length - 1}
         />
       ))}
 
       {/* ── ROW: 3 medium cells ── */}
-      {consequencesDataLarge.map((cell, i) => (
+      {consequencesDataLarge.map((cell) => (
         <DataCell
           key={cell.id}
           data={cell}
           size="medium"
-          isLast={i === consequencesDataLarge.length - 1}
         />
       ))}
     </>

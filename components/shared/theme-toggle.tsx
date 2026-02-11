@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { Moon, Sun } from "lucide-react"
 
 export function ThemeToggle() {
-  const [dark, setDark] = useState(false)
+  const [dark, setDark] = useState<boolean | null>(null)
 
   useEffect(() => {
     const stored = localStorage.getItem("theme")
@@ -21,11 +21,16 @@ export function ThemeToggle() {
     localStorage.setItem("theme", next ? "dark" : "light")
   }
 
+  // Avoid hydration mismatch: render nothing until client-side theme is resolved
+  if (dark === null) {
+    return <div className="size-7" />
+  }
+
   return (
     <button
       onClick={toggle}
       className="p-1.5 rounded-md hover:bg-secondary transition-colors cursor-pointer"
-      aria-label="Basculer le theme"
+      aria-label={dark ? "Passer au mode clair" : "Passer au mode sombre"}
     >
       {dark ? <Sun className="size-4" /> : <Moon className="size-4" />}
     </button>

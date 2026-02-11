@@ -9,9 +9,9 @@ export const consequencesNav: SectionNavItem[] = [
   { label: "SSP5-8.5", anchor: "csq-ssp585" },
   { label: "Projections", anchor: "csq-projections" },
   { label: "Risques", anchor: "csq-risques" },
-  { label: "Extremes", anchor: "csq-extremes" },
+  { label: "Extrêmes", anchor: "csq-extremes" },
   { label: "Climat", anchor: "csq-climat" },
-  { label: "Systeme", anchor: "csq-systeme" },
+  { label: "Système", anchor: "csq-systeme" },
   { label: "Impacts", anchor: "csq-impacts" },
 ]
 
@@ -21,72 +21,72 @@ export function ConsequencesSection() {
 
       <SectionHeader
         id="csq-ssp585"
-        title="Scenario SSP5-8.5 — +4,4°C en 2100"
-        subtitle="Consequences chiffrees d'un rechauffement non maitrise"
+        title="Scénario SSP5-8.5 — +4,4°C en 2100"
+        subtitle="Conséquences chiffrées d'un réchauffement non maîtrisé"
       />
 
       <ConsequencesGrid />
 
       <SectionHeader
         id="csq-projections"
-        title="Projections par niveau de rechauffement"
-        subtitle="Impacts sur les especes, la sante et l'agriculture entre 1,5°C et 4°C"
+        title="Projections par niveau de réchauffement"
+        subtitle="Impacts sur les espèces, la santé et l'agriculture entre 1,5°C et 4°C"
       />
 
       {/* ── SYR-SPM.2 (6) | SYR-SPM.3 (6) — synthèse SYR ── */}
-      <FigureCard figure={consequencesFigures[0]} />
-      <FigureCard figure={consequencesFigures[1]} isLast />
+      <FigureCard figure={consequencesFigures[0]} priority />
+      <FigureCard figure={consequencesFigures[1]} />
 
       <SectionHeader
         id="csq-risques"
-        title="Risques par niveau de rechauffement"
-        subtitle="Comment les risques evoluent entre 1,5°C et 4°C+"
+        title="Risques par niveau de réchauffement"
+        subtitle="Comment les risques évoluent entre 1,5°C et 4°C+"
       />
 
       {/* ── WG2-SPM.3a (6) | WG2-SPM.3b (6) ── */}
       <FigureCard figure={consequencesFigures[2]} />
-      <FigureCard figure={consequencesFigures[3]} isLast />
+      <FigureCard figure={consequencesFigures[3]} />
 
       <SectionHeader
         id="csq-extremes"
-        title="Extremes climatiques"
-        subtitle="Changements observes et projetes dans les evenements extremes"
+        title="Extrêmes climatiques"
+        subtitle="Changements observés et projetés dans les événements extrêmes"
       />
 
       {/* ── SPM.3 (6) | SPM.6 (6) ── */}
       <FigureCard figure={consequencesFigures[6]} />
-      <FigureCard figure={consequencesFigures[7]} isLast />
+      <FigureCard figure={consequencesFigures[7]} />
 
       <SectionHeader
         id="csq-climat"
         title="Projections climatiques"
-        subtitle="Changements projetes de temperature, precipitations et humidite des sols"
+        subtitle="Changements projetés de température, précipitations et humidité des sols"
       />
 
       {/* ── SPM.5a (6) | SPM.5b (6) ── */}
       <FigureCard figure={consequencesFigures[4]} />
-      <FigureCard figure={consequencesFigures[5]} isLast />
+      <FigureCard figure={consequencesFigures[5]} />
 
       <SectionHeader
         id="csq-systeme"
-        title="Reponse du systeme climatique"
-        subtitle="Temperature, glace arctique, acidification des oceans et montee des mers"
+        title="Réponse du système climatique"
+        subtitle="Température, glace arctique, acidification des océans et montée des mers"
       />
 
       {/* ── SPM.8 (12 full width) ── */}
-      <FigureCard figure={consequencesFigures[8]} isLast />
+      <FigureCard figure={consequencesFigures[8]} />
 
       <SectionHeader
         id="csq-impacts"
-        title="Impacts observes"
-        subtitle="Changements deja mesurables dans les ecosystemes et systemes humains"
+        title="Impacts observés"
+        subtitle="Changements déjà mesurables dans les écosystèmes et systèmes humains"
       />
 
       {/* ── WG2-SPM.2 (12 full width) ── */}
-      <FigureCard figure={consequencesFigures[9]} isLast />
+      <FigureCard figure={consequencesFigures[9]} />
 
       <SourceFooter
-        text="Sans inflexion majeure des trajectoires d'emissions, un rechauffement de +4,4°C d'ici 2100 entrainerait des transformations irreversibles des systemes naturels et humains a l'echelle planetaire."
+        text="Sans inflexion majeure des trajectoires d'émissions, un réchauffement de +4,4°C d'ici 2100 entraînerait des transformations irréversibles des systèmes naturels et humains à l'échelle planétaire."
         source="Source : GIEC AR6 — WG I + WG II + SYR"
       />
     </>
