@@ -13,7 +13,7 @@ import {
 } from "react-aria-components"
 
 import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import { Button } from "./button"
 import { XIcon } from "lucide-react"
 
 function DialogTrigger({ ...props }: DialogTriggerPrimitiveProps) {
