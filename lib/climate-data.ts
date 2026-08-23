@@ -63,6 +63,15 @@ export const causesFigures: FigureRef[] = [
     source: "GIEC, 2021 : AR6 WG1 SPM, Figure SPM.7",
     colSpan: 12,
   },
+  {
+    id: "owid-ghg-sector-enduse",
+    src: "/figures/owid/ghg-emissions-by-sector-enduse.png",
+    alt: "Émissions mondiales de GES par secteur et usage final",
+    caption:
+      "Répartition des 49,4 Gt CO₂eq de 2016 avec l'énergie (73,2 %) réallouée aux usages qui la consomment : énergie dans l'industrie 24,2 %, transport 16,2 %, énergie dans les bâtiments 17,5 %. La vue par usage final évite le secteur « électricité » abstrait.",
+    source: "Our World in Data — Climate Watch / WRI — CC BY",
+    colSpan: 6,
+  },
 ]
 
 export const causesData: DataCellData[] = [
@@ -452,7 +461,7 @@ export const causesOwid: OwidChartRef[] = [
       "https://ourworldindata.org/grapher/global-warming-by-gas-and-source?tab=chart",
     title: "Contribution au réchauffement par gaz et origine",
     source: "Our World in Data — CC BY",
-    colSpan: 12,
+    colSpan: 6,
   },
   {
     id: "co2-long-term-concentration",

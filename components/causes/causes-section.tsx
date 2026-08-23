@@ -64,7 +64,8 @@ export function CausesSection() {
       <OwidCard chart={causesOwid[2]} />
       <OwidCard chart={causesOwid[3]} />
 
-      {/* ── OWID: réchauffement par gaz et origine (12) ── */}
+      {/* ── OWID: usage final sunburst WRI (6) | réchauffement par gaz (6) ── */}
+      <FigureCard figure={causesFigures[3]} />
       <OwidCard chart={causesOwid[4]} />
 
       <SectionHeader
