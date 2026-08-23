@@ -50,8 +50,10 @@ function SearchTrigger({
     >
       <Search className="size-3.5 shrink-0" />
       <span className="hidden sm:inline">{label}</span>
+      {/* ml-auto : sans effet quand le bouton épouse son contenu, colle le
+          raccourci au bord dès qu'on lui impose une largeur. */}
       {shortcut && (
-        <kbd className="pointer-events-none hidden items-center gap-0.5 rounded border border-border bg-background px-1.5 py-0.5 font-mono text-[10px] sm:inline-flex">
+        <kbd className="pointer-events-none ml-auto hidden items-center gap-0.5 rounded border border-border bg-background px-1.5 py-0.5 font-mono text-[10px] sm:inline-flex">
           ⌘K
         </kbd>
       )}
