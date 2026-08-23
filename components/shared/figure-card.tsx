@@ -1,20 +1,14 @@
 "use client"
 
 import Image from "next/image"
+import { Button as AriaButton } from "react-aria-components"
 import type { FigureRef } from "@/lib/climate-data"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
 import {
   Dialog,
-  DialogContent,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
+import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip"
 
 export function FigureCard({
   figure,
@@ -34,22 +28,23 @@ export function FigureCard({
       className="flex flex-col overflow-hidden"
     >
       {/* ── Image ── */}
-      <Dialog>
-        <DialogTrigger asChild>
-          <button className="cursor-zoom-in text-left" aria-label={`Agrandir : ${figure.alt}`}>
-            <AspectRatio ratio={aspectRatio} className="bg-secondary">
-              <Image
-                src={figure.src}
-                alt={figure.alt}
-                fill
-                className="object-contain"
-                sizes={`(max-width: 768px) 100vw, ${Math.round((colSpan / 12) * 100)}vw`}
-                priority={priority}
-              />
-            </AspectRatio>
-          </button>
-        </DialogTrigger>
-        <DialogContent className="max-w-[96vw] max-h-[96vh] p-0 overflow-auto">
+      <DialogTrigger>
+        <AriaButton
+          className="w-full cursor-zoom-in text-left"
+          aria-label={`Agrandir : ${figure.alt}`}
+        >
+          <div className="relative w-full bg-secondary" style={{ aspectRatio }}>
+            <Image
+              src={figure.src}
+              alt={figure.alt}
+              fill
+              className="object-contain"
+              sizes={`(max-width: 768px) 100vw, ${Math.round((colSpan / 12) * 100)}vw`}
+              priority={priority}
+            />
+          </div>
+        </AriaButton>
+        <Dialog className="max-h-[96vh] max-w-[96vw] overflow-auto p-0 sm:max-w-[96vw]">
           <DialogTitle className="sr-only">{figure.alt}</DialogTitle>
           <div className="p-4">
             <Image
@@ -57,41 +52,43 @@ export function FigureCard({
               alt={figure.alt}
               width={2400}
               height={1600}
-              className="w-full h-auto"
+              className="h-auto w-full"
               quality={95}
             />
-            <div className="mt-3 flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2">
-              <p className="text-xs leading-snug text-muted-foreground max-w-[600px]">
+            <div className="mt-3 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+              <p className="max-w-[600px] text-xs leading-snug text-muted-foreground">
                 {figure.caption}
               </p>
-              <p className="text-xs uppercase tracking-normal text-muted-foreground shrink-0">
+              <p className="shrink-0 text-xs uppercase tracking-normal text-muted-foreground">
                 {figure.source}
               </p>
             </div>
           </div>
-        </DialogContent>
-      </Dialog>
+        </Dialog>
+      </DialogTrigger>
 
       {/* ── Caption bar ── */}
-      <div data-figure-bar className="px-4 py-2.5 flex flex-col gap-1.5 min-h-[40px]">
+      <div data-figure-bar className="flex min-h-[40px] flex-col gap-1.5 px-4 py-2.5">
         {/* Caption visible on mobile, tooltip on desktop */}
-        <p className="text-xs leading-relaxed text-muted-foreground md:hidden line-clamp-2">
+        <p className="text-xs leading-relaxed text-muted-foreground line-clamp-2 md:hidden">
           {figure.caption}
         </p>
         <div className="flex items-center justify-between gap-2">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <p data-figure-source className="text-xs uppercase tracking-normal text-muted-foreground truncate cursor-help hidden md:block">
-                  {figure.source}
-                </p>
-              </TooltipTrigger>
-              <TooltipContent side="top" className="max-w-[320px]">
-                <p className="text-xs leading-relaxed">{figure.caption}</p>
-              </TooltipContent>
+          <TooltipTrigger>
+            <p
+              data-figure-source
+              className="hidden cursor-help truncate text-xs uppercase tracking-normal text-muted-foreground md:block"
+            >
+              {figure.source}
+            </p>
+            <Tooltip placement="top" className="max-w-[320px]">
+              <p className="text-xs leading-relaxed">{figure.caption}</p>
             </Tooltip>
-          </TooltipProvider>
-          <p data-figure-source className="text-xs uppercase tracking-normal text-muted-foreground truncate md:hidden">
+          </TooltipTrigger>
+          <p
+            data-figure-source
+            className="truncate text-xs uppercase tracking-normal text-muted-foreground md:hidden"
+          >
             {figure.source}
           </p>
         </div>

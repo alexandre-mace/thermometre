@@ -1,8 +1,9 @@
 import { SectionHeader } from "@/components/shared/section-header"
 import { FigureCard } from "@/components/shared/figure-card"
+import { OwidCard } from "@/components/shared/owid-card"
 import { SourceFooter } from "@/components/shared/source-footer"
 import { ConsequencesGrid } from "./consequences-grid"
-import { consequencesFigures } from "@/lib/climate-data"
+import { consequencesFigures, consequencesOwid } from "@/lib/climate-data"
 import type { SectionNavItem } from "@/components/shared/section-nav"
 
 export const consequencesNav: SectionNavItem[] = [
@@ -12,6 +13,7 @@ export const consequencesNav: SectionNavItem[] = [
   { label: "Extrêmes", anchor: "csq-extremes" },
   { label: "Climat", anchor: "csq-climat" },
   { label: "Système", anchor: "csq-systeme" },
+  { label: "Observé", anchor: "csq-observe" },
   { label: "Impacts", anchor: "csq-impacts" },
 ]
 
@@ -77,6 +79,16 @@ export function ConsequencesSection() {
       <FigureCard figure={consequencesFigures[8]} />
 
       <SectionHeader
+        id="csq-observe"
+        title="Séries observées"
+        subtitle="Montée des mers et fonte des calottes, mesurées année après année"
+      />
+
+      {/* ── OWID: niveau de la mer (6) | calottes (6) ── */}
+      <OwidCard chart={consequencesOwid[0]} />
+      <OwidCard chart={consequencesOwid[1]} />
+
+      <SectionHeader
         id="csq-impacts"
         title="Impacts observés"
         subtitle="Changements déjà mesurables dans les écosystèmes et systèmes humains"
@@ -84,6 +96,9 @@ export function ConsequencesSection() {
 
       {/* ── WG2-SPM.2 (12 full width) ── */}
       <FigureCard figure={consequencesFigures[9]} />
+
+      {/* ── OWID: indice planète vivante (12) ── */}
+      <OwidCard chart={consequencesOwid[2]} />
 
       <SourceFooter
         text="Sans inflexion majeure des trajectoires d'émissions, un réchauffement de +4,4°C d'ici 2100 entraînerait des transformations irréversibles des systèmes naturels et humains à l'échelle planétaire."

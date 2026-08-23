@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo, useEffect, useCallback } from "react"
+import { useState, useMemo, useEffect } from "react"
 import { Search } from "lucide-react"
 import type { TabId } from "@/components/climate-tabs"
 import {
@@ -10,6 +10,7 @@ import {
   consequencesFigures,
   consequencesData,
   consequencesDataLarge,
+  consequencesOwid,
   solutionsFigures,
   solutionsData,
   solutionsOwid,
@@ -24,7 +25,6 @@ import {
   Command,
   CommandInput,
   CommandList,
-  CommandEmpty,
   CommandGroup,
   CommandItem,
 } from "@/components/ui/command"
@@ -95,6 +95,14 @@ function buildIndex(): SearchResult[] {
       anchor: closestAnchor("consequences", f.alt),
     })
   }
+  for (const o of consequencesOwid) {
+    results.push({
+      label: o.title,
+      detail: o.source,
+      tab: "consequences",
+      anchor: closestAnchor("consequences", o.title),
+    })
+  }
 
   // Solutions
   for (const d of solutionsData) {
@@ -159,19 +167,6 @@ export function SearchBar({
     return () => document.removeEventListener("keydown", onKeyDown)
   }, [])
 
-  const handleSelect = useCallback(
-    (value: string) => {
-      const r = index.find(
-        (item) => `${item.tab}-${item.label}` === value,
-      )
-      if (r) {
-        onNavigate(r.tab, r.anchor)
-        setOpen(false)
-      }
-    },
-    [index, onNavigate],
-  )
-
   // Group results by tab
   const grouped = useMemo(() => {
     const groups: Record<TabId, SearchResult[]> = {
@@ -209,19 +204,28 @@ export function SearchBar({
       >
         <Command>
           <CommandInput placeholder="Rechercher une donnée, un graphique..." />
-          <CommandList>
-            <CommandEmpty>Aucun résultat.</CommandEmpty>
+          <CommandList
+            renderEmptyState={() => (
+              <div className="py-6 text-center text-sm text-muted-foreground">
+                Aucun résultat.
+              </div>
+            )}
+          >
             {(Object.keys(grouped) as TabId[]).map((tab) => (
               <CommandGroup key={tab} heading={tabLabel[tab]}>
                 {grouped[tab].map((r) => (
                   <CommandItem
                     key={`${r.tab}-${r.label}`}
-                    value={`${r.tab}-${r.label}`}
-                    onSelect={handleSelect}
-                    className="flex flex-col items-start gap-0.5 cursor-pointer"
+                    id={`${r.tab}-${r.label}`}
+                    textValue={`${r.label} ${r.detail}`}
+                    onAction={() => {
+                      onNavigate(r.tab, r.anchor)
+                      setOpen(false)
+                    }}
+                    className="flex cursor-pointer flex-col items-start gap-0.5"
                   >
                     <p className="text-sm">{r.label}</p>
-                    <p className="text-xs text-muted-foreground truncate max-w-full">
+                    <p className="max-w-full truncate text-xs text-muted-foreground">
                       {r.detail}
                     </p>
                   </CommandItem>

@@ -3,7 +3,6 @@
 import { useState, useCallback, useEffect, useRef, useMemo } from "react"
 import { ClimateTabs, type TabId } from "./climate-tabs"
 import { SectionNav } from "./shared/section-nav"
-import { ThemeToggle } from "./shared/theme-toggle"
 import { SearchBar } from "./shared/search-bar"
 import { CausesSection, causesNav } from "./causes/causes-section"
 import {
@@ -104,7 +103,6 @@ export function ClimateDashboard() {
           </h1>
           <div className="flex items-center gap-2">
             <SearchBar onNavigate={handleSearchNavigate} />
-            <ThemeToggle />
           </div>
         </div>
 

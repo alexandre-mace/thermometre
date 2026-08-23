@@ -430,6 +430,65 @@ export const causesOwid: OwidChartRef[] = [
     source: "Our World in Data — CC BY",
     colSpan: 12,
   },
+  {
+    id: "ghg-emissions-by-sector",
+    embedUrl:
+      "https://ourworldindata.org/grapher/ghg-emissions-by-sector?country=~OWID_WRL&tab=chart",
+    title: "Émissions de GES par secteur",
+    source: "Our World in Data — Climate Watch — CC BY",
+    colSpan: 6,
+  },
+  {
+    id: "production-vs-consumption-co2",
+    embedUrl:
+      "https://ourworldindata.org/grapher/production-vs-consumption-co2-emissions?country=~FRA&tab=line",
+    title: "CO₂ : production vs consommation (émissions importées)",
+    source: "Our World in Data — Global Carbon Budget — CC BY",
+    colSpan: 6,
+  },
+  {
+    id: "global-warming-by-gas-and-source",
+    embedUrl:
+      "https://ourworldindata.org/grapher/global-warming-by-gas-and-source?tab=chart",
+    title: "Contribution au réchauffement par gaz et origine",
+    source: "Our World in Data — CC BY",
+    colSpan: 12,
+  },
+  {
+    id: "co2-long-term-concentration",
+    embedUrl:
+      "https://ourworldindata.org/grapher/co2-long-term-concentration?tab=chart",
+    title: "Concentration de CO₂ dans l'atmosphère (long terme)",
+    source: "Our World in Data — Scripps / NOAA — CC BY",
+    colSpan: 12,
+  },
+]
+
+export const consequencesOwid: OwidChartRef[] = [
+  {
+    id: "sea-level",
+    embedUrl: "https://ourworldindata.org/grapher/sea-level?tab=chart",
+    title: "Montée du niveau de la mer (observée)",
+    source: "Our World in Data — NOAA / CSIRO — CC BY",
+    colSpan: 6,
+  },
+  {
+    id: "ice-sheet-mass-balance",
+    embedUrl:
+      "https://ourworldindata.org/grapher/ice-sheet-mass-balance?tab=chart",
+    title: "Perte de masse des calottes glaciaires",
+    source: "Our World in Data — IMBIE / NASA — CC BY",
+    colSpan: 6,
+  },
+  {
+    id: "global-living-planet-index",
+    embedUrl:
+      "https://ourworldindata.org/grapher/global-living-planet-index?tab=chart",
+    title: "Indice Planète Vivante — déclin des populations de vertébrés",
+    source:
+      "Our World in Data — WWF / ZSL — CC BY. Déclin toutes causes confondues : destruction d'habitat, surexploitation, climat.",
+    colSpan: 12,
+  },
 ]
 
 export const solutionsOwid: OwidChartRef[] = [

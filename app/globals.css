@@ -2,13 +2,11 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -48,29 +46,29 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
+  --background: #FAF8F0;
   --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
+  --card: #FDFCF8;
   --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
+  --popover: #FDFCF8;
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
+  --primary: #0737FF;
   --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
+  --secondary: oklch(0.97 0.008 90);
   --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
+  --muted: oklch(0.95 0.01 90);
+  --muted-foreground: oklch(0.4 0.015 80);
+  --accent: oklch(0.95 0.01 90);
   --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.58 0.22 27);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.809 0.105 25);
-  --chart-2: oklch(0.623 0.214 22);
-  --chart-3: oklch(0.546 0.245 18);
-  --chart-4: oklch(0.488 0.243 15);
-  --chart-5: oklch(0.424 0.199 12);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.9 0.015 88);
+  --input: oklch(0.9 0.015 88);
+  --ring: #0737FF;
+  --chart-1: oklch(0.646 0.222 41.116);
+  --chart-2: oklch(0.6 0.118 184.704);
+  --chart-3: oklch(0.398 0.07 227.392);
+  --chart-4: oklch(0.828 0.189 84.429);
+  --chart-5: oklch(0.769 0.188 70.08);
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
@@ -82,39 +80,6 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.87 0.00 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.371 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.809 0.105 25);
-  --chart-2: oklch(0.623 0.214 22);
-  --chart-3: oklch(0.546 0.245 18);
-  --chart-4: oklch(0.488 0.243 15);
-  --chart-5: oklch(0.424 0.199 12);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-}
 
 @layer base {
   * {
@@ -122,6 +87,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
@@ -145,9 +112,6 @@
   --cell-bg: var(--card);
 }
 
-.dark {
-  --data-accent: #f87171;
-}
 
 /* ══ Bento cells: shadcn Card style ══ */
 [data-bento-cell] {
@@ -257,21 +221,6 @@
   text-transform: none;
 }
 
-
-/* ── Dialog ── */
-[data-slot="dialog-content"] {
-  border: none !important;
-  border-radius: var(--cell-radius) !important;
-  box-shadow:
-    0 10px 40px -10px rgb(0 0 0 / 0.15),
-    0 0 0 1px var(--border) !important;
-  --tw-ring-color: transparent !important;
-}
-[data-slot="dialog-overlay"] {
-  background: rgba(0, 0, 0, 0.5) !important;
-  backdrop-filter: blur(4px) !important;
-}
-
 /* ── OWID iframe cards ── */
 [data-owid-card] iframe {
   width: 100%;
@@ -333,11 +282,3 @@
 [data-bento-cell]:nth-child(15) { animation-delay: 420ms; }
 [data-bento-header]:nth-child(n+2) { animation-delay: 60ms; }
 [data-bento-footer] { animation-delay: 100ms; }
-
-/* ── Tooltip ── */
-[data-slot="tooltip-content"] {
-  border-radius: 0.375rem !important;
-  border: none !important;
-  background: var(--primary) !important;
-  color: var(--primary-foreground) !important;
-}

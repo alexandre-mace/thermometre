@@ -60,11 +60,21 @@ export function CausesSection() {
       {/* ── OWID: co2-explorer-per-capita (12) ── */}
       <OwidCard chart={causesOwid[1]} />
 
+      {/* ── OWID: par secteur (6) | production vs consommation (6) ── */}
+      <OwidCard chart={causesOwid[2]} />
+      <OwidCard chart={causesOwid[3]} />
+
+      {/* ── OWID: réchauffement par gaz et origine (12) ── */}
+      <OwidCard chart={causesOwid[4]} />
+
       <SectionHeader
         id="causes-carbone"
         title="Cycle du carbone"
         subtitle="La capacité d'absorption des puits naturels diminue avec les émissions"
       />
+
+      {/* ── OWID: concentration CO₂ long terme (12) ── */}
+      <OwidCard chart={causesOwid[5]} />
 
       {/* ── SPM.7 (12 full width) ── */}
       <FigureCard figure={causesFigures[2]} />
