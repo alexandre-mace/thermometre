@@ -6,6 +6,7 @@ import { SectionNav } from "./shared/section-nav"
 import { SearchBar } from "./shared/search-bar"
 import { Brand } from "@/components/brand"
 import { ClimateLabBadge } from "@/components/climatelab-badge"
+import { MadeWithLove } from "@/components/made-with-love"
 import { CausesSection, causesNav } from "./causes/causes-section"
 import {
   ConsequencesSection,
@@ -135,6 +136,8 @@ export function ClimateDashboard() {
         {activeTab === "consequences" && <ConsequencesSection />}
         {activeTab === "solutions" && <SolutionsSection />}
       </div>
+
+      <MadeWithLove className="mt-0 pb-10" />
     </section>
   )
 }
