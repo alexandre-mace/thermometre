@@ -94,7 +94,7 @@ export function ClimateDashboard() {
   )
 
   return (
-    <section className="w-full bg-background text-foreground font-[family-name:var(--font-geist-sans)]">
+    <section className="flex min-h-dvh w-full flex-col bg-background text-foreground font-[family-name:var(--font-geist-sans)]">
       {/* ── Sticky header area ── */}
       <div className="sticky top-0 z-20 bg-background/95 backdrop-blur-sm">
         <div
@@ -136,7 +136,7 @@ export function ClimateDashboard() {
         {activeTab === "solutions" && <SolutionsSection />}
       </div>
 
-      <MadeWithLove className="mt-0 pb-10" />
+      <MadeWithLove className="mt-auto pb-10" />
     </section>
   )
 }
