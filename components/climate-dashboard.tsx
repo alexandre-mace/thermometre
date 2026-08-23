@@ -4,6 +4,8 @@ import { useState, useCallback, useEffect, useRef, useMemo } from "react"
 import { ClimateTabs, type TabId } from "./climate-tabs"
 import { SectionNav } from "./shared/section-nav"
 import { SearchBar } from "./shared/search-bar"
+import { Brand } from "@/components/brand"
+import { ClimateLabBadge } from "@/components/climatelab-badge"
 import { CausesSection, causesNav } from "./causes/causes-section"
 import {
   ConsequencesSection,
@@ -98,11 +100,16 @@ export function ClimateDashboard() {
           data-dashboard-header
           className="px-2 pt-4 pb-3 md:px-8 md:pt-4 md:pb-3 flex items-center justify-between"
         >
-          <h1 className="text-sm md:text-base font-semibold tracking-tight">
-            🌡️ Thermomètre
+          <h1>
+            <Brand
+              name="Thermomètre"
+              logo="https://em-content.zobj.net/thumbs/240/apple/354/thermometer_1f321-fe0f.png"
+              className="font-semibold tracking-tight md:text-base"
+            />
           </h1>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             <SearchBar onNavigate={handleSearchNavigate} />
+            <ClimateLabBadge className="hidden sm:flex" />
           </div>
         </div>
 
