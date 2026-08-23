@@ -20,6 +20,7 @@ import {
 import { causesNav } from "@/components/causes/causes-section"
 import { consequencesNav } from "@/components/consequences/consequences-section"
 import { solutionsNav } from "@/components/solutions/solutions-section"
+import { SearchTrigger } from "@/components/ui/search-trigger"
 import {
   CommandDialog,
   Command,
@@ -155,18 +156,6 @@ export function SearchBar({
   const [open, setOpen] = useState(false)
   const index = useMemo(() => buildIndex(), [])
 
-  // ⌘K / Ctrl+K shortcut
-  useEffect(() => {
-    function onKeyDown(e: KeyboardEvent) {
-      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
-        e.preventDefault()
-        setOpen((o) => !o)
-      }
-    }
-    document.addEventListener("keydown", onKeyDown)
-    return () => document.removeEventListener("keydown", onKeyDown)
-  }, [])
-
   // Group results by tab
   const grouped = useMemo(() => {
     const groups: Record<TabId, SearchResult[]> = {
@@ -182,19 +171,7 @@ export function SearchBar({
 
   return (
     <>
-      <button
-        onClick={() => setOpen(true)}
-        className="flex items-center gap-2 bg-secondary rounded-md px-2.5 py-1.5 cursor-pointer hover:bg-accent transition-colors"
-        aria-label="Rechercher"
-      >
-        <Search className="size-3.5 text-muted-foreground/60 shrink-0" />
-        <span className="text-xs text-muted-foreground/60 hidden md:inline">
-          Rechercher...
-        </span>
-        <kbd className="hidden md:inline-flex items-center gap-0.5 rounded border border-border bg-background px-1.5 py-0.5 text-[10px] font-mono text-muted-foreground/60">
-          ⌘K
-        </kbd>
-      </button>
+      <SearchTrigger onOpen={() => setOpen(true)} />
 
       <CommandDialog
         open={open}
