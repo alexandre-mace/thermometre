@@ -105,7 +105,6 @@ export function ClimateDashboard() {
             <Brand
               name="Thermomètre"
               logo="https://em-content.zobj.net/thumbs/240/apple/354/thermometer_1f321-fe0f.png"
-              className="font-semibold tracking-tight md:text-base"
             />
           </h1>
           <div className="flex items-center gap-3">
