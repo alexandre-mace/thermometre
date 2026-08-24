@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/button"
 import {
   Command,
   CommandDialog,
+  CommandEmpty,
   CommandInput,
   CommandItem,
   CommandList,
@@ -179,7 +180,7 @@ function SelecteurEntite({
         variant="outline"
         size="sm"
         className="h-7 gap-1.5 text-xs"
-        onPress={() => setOuvert(true)}
+        onClick={() => setOuvert(true)}
       >
         {libelle}
         <span className="text-muted-foreground">↓</span>
@@ -192,20 +193,15 @@ function SelecteurEntite({
       >
         <Command>
           <CommandInput placeholder="Chercher un pays ou une région…" />
-          <CommandList
-            className="max-h-72"
-            renderEmptyState={() => (
-              <div className="py-6 text-center text-sm text-muted-foreground">
-                Aucune entité trouvée.
-              </div>
-            )}
-          >
+          <CommandList className="max-h-72">
+            <CommandEmpty className="text-muted-foreground">
+              Aucune entité trouvée.
+            </CommandEmpty>
             {dataset.entites.map((e) => (
               <CommandItem
                 key={e.nom}
-                id={e.nom}
-                textValue={`${entiteFr(e.nom)} ${e.nom}`}
-                onAction={() => {
+                value={`${entiteFr(e.nom)} ${e.nom}`}
+                onSelect={() => {
                   onChoix(e.nom, e.code)
                   setOuvert(false)
                 }}

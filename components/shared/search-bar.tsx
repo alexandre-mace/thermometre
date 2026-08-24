@@ -26,6 +26,7 @@ import {
   Command,
   CommandInput,
   CommandList,
+  CommandEmpty,
   CommandGroup,
   CommandItem,
 } from "@/components/ui/command"
@@ -181,21 +182,17 @@ export function SearchBar({
       >
         <Command>
           <CommandInput placeholder="Rechercher une donnée, un graphique..." />
-          <CommandList
-            renderEmptyState={() => (
-              <div className="py-6 text-center text-sm text-muted-foreground">
-                Aucun résultat.
-              </div>
-            )}
-          >
+          <CommandList>
+            <CommandEmpty className="text-muted-foreground">
+              Aucun résultat.
+            </CommandEmpty>
             {(Object.keys(grouped) as TabId[]).map((tab) => (
               <CommandGroup key={tab} heading={tabLabel[tab]}>
                 {grouped[tab].map((r) => (
                   <CommandItem
                     key={`${r.tab}-${r.label}`}
-                    id={`${r.tab}-${r.label}`}
-                    textValue={`${r.label} ${r.detail}`}
-                    onAction={() => {
+                    value={`${r.tab}-${r.label} ${r.detail}`}
+                    onSelect={() => {
                       onNavigate(r.tab, r.anchor)
                       setOpen(false)
                     }}

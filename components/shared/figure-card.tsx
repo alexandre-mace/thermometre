@@ -1,14 +1,19 @@
 "use client"
 
 import Image from "next/image"
-import { Button as AriaButton } from "react-aria-components"
 import type { FigureRef } from "@/lib/climate-data"
 import {
   Dialog,
+  DialogContent,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-import { Tooltip, TooltipTrigger } from "@/components/ui/tooltip"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 
 export function FigureCard({
   figure,
@@ -28,8 +33,8 @@ export function FigureCard({
       className="flex flex-col overflow-hidden"
     >
       {/* ── Image ── */}
-      <DialogTrigger>
-        <AriaButton
+      <Dialog>
+        <DialogTrigger
           className="w-full cursor-zoom-in text-left"
           aria-label={`Agrandir : ${figure.alt}`}
         >
@@ -43,8 +48,8 @@ export function FigureCard({
               priority={priority}
             />
           </div>
-        </AriaButton>
-        <Dialog className="max-h-[96vh] max-w-[96vw] overflow-auto p-0 sm:max-w-[96vw]">
+        </DialogTrigger>
+        <DialogContent className="max-h-[96vh] max-w-[96vw] overflow-auto p-0 sm:max-w-[96vw]">
           <DialogTitle className="sr-only">{figure.alt}</DialogTitle>
           <div className="p-4">
             <Image
@@ -64,8 +69,8 @@ export function FigureCard({
               </p>
             </div>
           </div>
-        </Dialog>
-      </DialogTrigger>
+        </DialogContent>
+      </Dialog>
 
       {/* ── Caption bar ── */}
       <div data-figure-bar className="flex min-h-[40px] flex-col gap-1.5 px-4 py-2.5">
@@ -74,17 +79,23 @@ export function FigureCard({
           {figure.caption}
         </p>
         <div className="flex items-center justify-between gap-2">
-          <TooltipTrigger>
-            <p
-              data-figure-source
-              className="hidden cursor-help truncate text-xs uppercase tracking-normal text-muted-foreground md:block"
-            >
-              {figure.source}
-            </p>
-            <Tooltip placement="top" className="max-w-[320px]">
-              <p className="text-xs leading-relaxed">{figure.caption}</p>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger
+                render={
+                  <p
+                    data-figure-source
+                    className="hidden cursor-help truncate text-xs uppercase tracking-normal text-muted-foreground md:block"
+                  />
+                }
+              >
+                {figure.source}
+              </TooltipTrigger>
+              <TooltipContent side="top" className="max-w-[320px]">
+                <p className="text-xs leading-relaxed">{figure.caption}</p>
+              </TooltipContent>
             </Tooltip>
-          </TooltipTrigger>
+          </TooltipProvider>
           <p
             data-figure-source
             className="truncate text-xs uppercase tracking-normal text-muted-foreground md:hidden"
