@@ -1,11 +1,15 @@
 import { SectionHeader } from "@/components/shared/section-header"
 import { FigureCard } from "@/components/shared/figure-card"
-import { OwidCard } from "@/components/shared/owid-card"
 import { OwidNativeChart } from "@/components/charts/owid-native-chart"
 import { dataset as temperatureAnomaly } from "@/lib/owid/temperature-anomaly"
+import { dataset as co2Explorer } from "@/lib/owid/co2-explorer-per-capita"
+import { dataset as gesParSecteur } from "@/lib/owid/ghg-emissions-by-sector"
+import { dataset as prodVsConso } from "@/lib/owid/production-vs-consumption-co2"
+import { dataset as rechauffementParGaz } from "@/lib/owid/global-warming-by-gas-and-source"
+import { dataset as co2LongTerme } from "@/lib/owid/co2-long-term-concentration"
 import { SourceFooter } from "@/components/shared/source-footer"
 import { DataCell } from "@/components/shared/data-cell"
-import { causesFigures, causesData, causesOwid } from "@/lib/climate-data"
+import { causesFigures, causesData } from "@/lib/climate-data"
 import type { SectionNavItem } from "@/components/shared/section-nav"
 
 export const causesNav: SectionNavItem[] = [
@@ -65,15 +69,32 @@ export function CausesSection() {
       />
 
       {/* ── OWID: co2-explorer-per-capita (12) ── */}
-      <OwidCard chart={causesOwid[1]} />
+      <OwidNativeChart
+        dataset={co2Explorer}
+        title="Émissions de CO₂ par habitant : grands émetteurs"
+        colSpan={12}
+      />
 
       {/* ── OWID: par secteur (6) | production vs consommation (6) ── */}
-      <OwidCard chart={causesOwid[2]} />
-      <OwidCard chart={causesOwid[3]} />
+      <OwidNativeChart
+        dataset={gesParSecteur}
+        title="Émissions de GES par secteur"
+        colSpan={6}
+      />
+      <OwidNativeChart
+        dataset={prodVsConso}
+        title="CO₂ : production vs consommation (émissions importées)"
+        entiteInitiale="France"
+        colSpan={6}
+      />
 
       {/* ── OWID: usage final sunburst WRI (6) | réchauffement par gaz (6) ── */}
       <FigureCard figure={causesFigures[3]} />
-      <OwidCard chart={causesOwid[4]} />
+      <OwidNativeChart
+        dataset={rechauffementParGaz}
+        title="Contribution au réchauffement par gaz et origine"
+        colSpan={6}
+      />
 
       <SectionHeader
         id="causes-carbone"
@@ -82,7 +103,12 @@ export function CausesSection() {
       />
 
       {/* ── OWID: concentration CO₂ long terme (12) ── */}
-      <OwidCard chart={causesOwid[5]} />
+      <OwidNativeChart
+        dataset={co2LongTerme}
+        title="Concentration de CO₂ dans l'atmosphère (800 000 ans)"
+        couleurLigne="var(--chart-1)"
+        colSpan={12}
+      />
 
       {/* ── SPM.7 (12 full width) ── */}
       <FigureCard figure={causesFigures[2]} />

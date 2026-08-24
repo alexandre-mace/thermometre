@@ -1,15 +1,15 @@
 import { SectionHeader } from "@/components/shared/section-header"
 import { FigureCard } from "@/components/shared/figure-card"
-import { OwidCard } from "@/components/shared/owid-card"
 import { OwidNativeChart } from "@/components/charts/owid-native-chart"
 import { dataset as electriciteParSource } from "@/lib/owid/electricity-prod-source-stacked"
+import { dataset as energieParSource } from "@/lib/owid/energy-consumption-by-source"
+import { dataset as empreinteAliments } from "@/lib/owid/food-carbon-footprint"
+import { dataset as empreinteMer } from "@/lib/owid/ghg-emissions-seafood"
 import { SourceFooter } from "@/components/shared/source-footer"
 import { DataCell } from "@/components/shared/data-cell"
 import {
   solutionsFigures,
   solutionsData,
-  solutionsOwid,
-  foodOwid,
   owidFigures,
 } from "@/lib/climate-data"
 import type { SectionNavItem } from "@/components/shared/section-nav"
@@ -47,7 +47,11 @@ export function SolutionsSection() {
       />
 
       {/* ── OWID: energy-consumption (6) | electricity-prod (6) ── */}
-      <OwidCard chart={solutionsOwid[0]} />
+      <OwidNativeChart
+        dataset={energieParSource}
+        title="Consommation d'énergie par source"
+        colSpan={6}
+      />
       <OwidNativeChart
         dataset={electriciteParSource}
         title="Production d'électricité par source"
@@ -86,8 +90,16 @@ export function SolutionsSection() {
       <FigureCard figure={owidFigures[0]} />
 
       {/* ── OWID: food-carbon-footprint (6) | ghg-emissions-seafood (6) ── */}
-      <OwidCard chart={foodOwid[0]} />
-      <OwidCard chart={foodOwid[1]} />
+      <OwidNativeChart
+        dataset={empreinteAliments}
+        title="Émissions de GES par kilogramme d'aliment"
+        colSpan={6}
+      />
+      <OwidNativeChart
+        dataset={empreinteMer}
+        title="Émissions de GES des produits de la mer"
+        colSpan={6}
+      />
 
       <SourceFooter
         text="Des réductions substantielles d'émissions sont possibles dans tous les secteurs. De nombreuses options ont un coût inférieur à 100 USD/tCO₂eq et certaines génèrent des économies nettes."

@@ -39,7 +39,7 @@ export const CHARTS = [
       "production-par-habitant": "co-emissions-per-capita",
       "consommation-par-habitant": "consumption-co2-per-capita",
       "production-totale": "annual-co2-emissions-per-country",
-      "consommation-totale": "annual-co-emissions-consumption-based",
+      "consommation-totale": "consumption-co2-emissions",
       "cumule": "cumulative-co-emissions",
     },
   },
@@ -93,6 +93,15 @@ export const CHARTS = [
     slug: "electricity-prod-source-stacked",
     kind: "stacked",
     entites: true,
+  },
+  {
+    // L'Explorer alimentation, vue « par kilogramme, toutes étapes confondues ».
+    id: "food-carbon-footprint",
+    slug: "ghg-per-kg-poore",
+    kind: "bar",
+    entites: false,
+    pays:
+      "Bananas~Beef (beef herd)~Beef (dairy herd)~Cheese~Eggs~Lamb & Mutton~Milk~Maize~Nuts~Pig Meat~Peas~Potatoes~Poultry Meat~Rice~Tomatoes~Wheat & Rye~Tofu (soybeans)~Prawns (farmed)",
   },
   {
     id: "ghg-emissions-seafood",

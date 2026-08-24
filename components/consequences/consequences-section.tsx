@@ -1,6 +1,9 @@
 import { SectionHeader } from "@/components/shared/section-header"
 import { FigureCard } from "@/components/shared/figure-card"
-import { OwidCard } from "@/components/shared/owid-card"
+import { OwidNativeChart } from "@/components/charts/owid-native-chart"
+import { dataset as niveauMer } from "@/lib/owid/sea-level"
+import { dataset as calottes } from "@/lib/owid/ice-sheet-mass-balance"
+import { dataset as planeteVivante } from "@/lib/owid/global-living-planet-index"
 import { SourceFooter } from "@/components/shared/source-footer"
 import { ConsequencesGrid } from "./consequences-grid"
 import { consequencesFigures, consequencesOwid } from "@/lib/climate-data"
@@ -85,8 +88,17 @@ export function ConsequencesSection() {
       />
 
       {/* ── OWID: niveau de la mer (6) | calottes (6) ── */}
-      <OwidCard chart={consequencesOwid[0]} />
-      <OwidCard chart={consequencesOwid[1]} />
+      <OwidNativeChart
+        dataset={niveauMer}
+        title="Montée du niveau de la mer (observée)"
+        serieLigne="Average of Church and White (2011) and UHSLC"
+        colSpan={6}
+      />
+      <OwidNativeChart
+        dataset={calottes}
+        title="Perte de masse des calottes glaciaires"
+        colSpan={6}
+      />
 
       <SectionHeader
         id="csq-impacts"
@@ -98,7 +110,12 @@ export function ConsequencesSection() {
       <FigureCard figure={consequencesFigures[9]} />
 
       {/* ── OWID: indice planète vivante (12) ── */}
-      <OwidCard chart={consequencesOwid[2]} />
+      <OwidNativeChart
+        dataset={planeteVivante}
+        title="Indice Planète Vivante : déclin des populations de vertébrés"
+        serieLigne="Central estimate"
+        colSpan={12}
+      />
 
       <SourceFooter
         text="Sans inflexion majeure des trajectoires d'émissions, un réchauffement de +4,4°C d'ici 2100 entraînerait des transformations irréversibles des systèmes naturels et humains à l'échelle planétaire."

@@ -23,7 +23,7 @@ export const dataset: OwidDataset = {
     "production-par-habitant": "co-emissions-per-capita",
     "consommation-par-habitant": "consumption-co2-per-capita",
     "production-totale": "annual-co2-emissions-per-country",
-    "consommation-totale": "annual-co-emissions-consumption-based",
+    "consommation-totale": "consumption-co2-emissions",
     "cumule": "cumulative-co-emissions"
   },
   "entites": [
