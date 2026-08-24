@@ -1,6 +1,8 @@
 import { SectionHeader } from "@/components/shared/section-header"
 import { FigureCard } from "@/components/shared/figure-card"
 import { OwidCard } from "@/components/shared/owid-card"
+import { OwidNativeChart } from "@/components/charts/owid-native-chart"
+import { dataset as temperatureAnomaly } from "@/lib/owid/temperature-anomaly"
 import { SourceFooter } from "@/components/shared/source-footer"
 import { DataCell } from "@/components/shared/data-cell"
 import { causesFigures, causesData, causesOwid } from "@/lib/climate-data"
@@ -48,8 +50,13 @@ export function CausesSection() {
         subtitle="Évolution de la température mondiale depuis 1850"
       />
 
-      {/* ── OWID: temperature-anomaly (12) ── */}
-      <OwidCard chart={causesOwid[0]} />
+      {/* ── OWID natif : temperature-anomaly (12) ── */}
+      <OwidNativeChart
+        dataset={temperatureAnomaly}
+        title="Anomalie de température mondiale"
+        serieLigne="Average"
+        colSpan={12}
+      />
 
       <SectionHeader
         id="causes-emissions"

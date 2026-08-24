@@ -1,6 +1,8 @@
 import { SectionHeader } from "@/components/shared/section-header"
 import { FigureCard } from "@/components/shared/figure-card"
 import { OwidCard } from "@/components/shared/owid-card"
+import { OwidNativeChart } from "@/components/charts/owid-native-chart"
+import { dataset as electriciteParSource } from "@/lib/owid/electricity-prod-source-stacked"
 import { SourceFooter } from "@/components/shared/source-footer"
 import { DataCell } from "@/components/shared/data-cell"
 import {
@@ -46,7 +48,11 @@ export function SolutionsSection() {
 
       {/* ── OWID: energy-consumption (6) | electricity-prod (6) ── */}
       <OwidCard chart={solutionsOwid[0]} />
-      <OwidCard chart={solutionsOwid[1]} />
+      <OwidNativeChart
+        dataset={electriciteParSource}
+        title="Production d'électricité par source"
+        colSpan={6}
+      />
 
       <SectionHeader
         id="sol-attenuation"
