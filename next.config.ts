@@ -15,6 +15,18 @@ const nextConfig: NextConfig = {
     // 31 jours, le plafond de cache Vercel pour les images locales (4 h par défaut).
     minimumCacheTTL: 2678400,
   },
+  // Ancienne adresse de l'explorateur, dont le projet Vercel ne faisait plus que
+  // rediriger : toute page renvoie à l'accueil, comme avant.
+  async redirects() {
+    return [
+      {
+        source: "/:path*",
+        has: [{ type: "host", value: "explorateur.climatelab.fr" }],
+        destination: "https://thermometre.climatelab.fr/",
+        permanent: true,
+      },
+    ];
+  },
 };
 
 export default nextConfig;
